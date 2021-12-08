@@ -9,8 +9,3 @@ variable "location" {
   }
   description = "is closest (Warsaw, Poland), supports E2 machine that is required"
 }
-
-
-variable "user" {
-  type = string
-}

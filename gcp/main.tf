@@ -15,6 +15,7 @@ provider "google" {
   zone    = var.location["zone"]
 }
 
+
 resource "google_compute_network" "vpc_network" {
   name = "terraform-network"
 }
@@ -36,26 +37,10 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
 
-  metadata = {
-    ssh-keys = "${var.user}:${file("${path.module}/public.pub")}"
-  }
+  metadata_startup_script = "sudo apt update -y && sudo apt install -y nginx"
 
-  provisioner "remote-exec" {
-    connection {
-      host        = google_compute_address.static.address
-      type        = "ssh"
-      user        = var.user
-      timeout     = "500s"
-      private_key = file("${path.module}/private.ppk")
-    }
-    inline = [
-      "sudo yum -y install epel-release",
-      "sudo yum -y install nginx",
-      "sudo nginx -v",
-    ]
-  }
   depends_on = [
-    google_compute_firewall.ingress, google_compute_firewall.egress, google_compute_address.static
+    google_compute_firewall.ingress, google_compute_address.static
   ]
 }
 
@@ -75,6 +60,7 @@ resource "google_compute_firewall" "ingress" {
   direction = "INGRESS"
 }
 
+
 resource "google_compute_address" "static" {
   name       = "vm-public-address"
   project    = var.project_id
@@ -83,12 +69,14 @@ resource "google_compute_address" "static" {
 }
 
 
-resource "google_compute_firewall" "egress" {
-  name    = "test-firewall-egress"
-  network = google_compute_network.vpc_network.name
-  deny {
-    protocol = "all"
-  }
-  direction = "EGRESS"
-}
+# UNCOMMENT TO DISABLE OUTCOMING INTERNET ACCESS
+# resource "google_compute_firewall" "egress" {
+#   name    = "test-firewall-egress"
+#   network = google_compute_network.vpc_network.name
+#   deny {
+#     protocol = "all"
+#   }
+#   direction = "EGRESS"
+#   depends_on = [google_compute_instance.vm_instance]
+# }
 
