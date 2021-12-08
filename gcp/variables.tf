@@ -1,6 +1,5 @@
 variable "project_id" {
-  type    = string
-  default = "infra-actor-333516"
+  type = string
 }
 variable "location" {
   type = map(string)
@@ -9,4 +8,9 @@ variable "location" {
     "zone"   = "europe-central2-a"
   }
   description = "is closest (Warsaw, Poland), supports E2 machine that is required"
+}
+
+
+variable "user" {
+  type = string
 }
