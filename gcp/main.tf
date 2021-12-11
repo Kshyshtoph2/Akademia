@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "google" {
-  credentials = file("credentials.json")
+  credentials = file("keys/credentials.json")
 
   project = var.project_id
   region  = var.location["region"]
@@ -46,7 +46,7 @@ resource "google_compute_instance" "vm_instance" {
 
 
 resource "google_compute_firewall" "ingress" {
-  name    = "test-firewall-ingress"
+  name    = "firewall-ingress"
   network = google_compute_network.vpc_network.name
 
   allow {
@@ -69,14 +69,16 @@ resource "google_compute_address" "static" {
 }
 
 
-# UNCOMMENT TO DISABLE OUTCOMING INTERNET ACCESS
-# resource "google_compute_firewall" "egress" {
-#   name    = "test-firewall-egress"
-#   network = google_compute_network.vpc_network.name
-#   deny {
-#     protocol = "all"
-#   }
-#   direction = "EGRESS"
-#   depends_on = [google_compute_instance.vm_instance]
-# }
+# UNCOMMENT TO DISABLE OUTGOING INTERNET ACCESS
+
+
+resource "google_compute_firewall" "egress" {
+  name    = "firewall-egress"
+  network = google_compute_network.vpc_network.name
+  deny {
+    protocol = "all"
+  }
+  direction = "EGRESS"
+  depends_on = [google_compute_instance.vm_instance]
+}
 
