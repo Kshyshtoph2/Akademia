@@ -16,6 +16,7 @@ provider "google" {
 }
 
 
+
 resource "google_compute_network" "vpc_network" {
   name = "terraform-network"
 }
@@ -37,7 +38,7 @@ resource "google_compute_instance" "vm_instance" {
     }
   }
 
-  metadata_startup_script = "sudo apt update -y && sudo apt install -y nginx"
+  metadata_startup_script = file("scripts/setup.sh")
 
   depends_on = [
     google_compute_firewall.ingress, google_compute_address.static
@@ -72,13 +73,13 @@ resource "google_compute_address" "static" {
 # UNCOMMENT TO DISABLE OUTGOING INTERNET ACCESS
 
 
-resource "google_compute_firewall" "egress" {
-  name    = "firewall-egress"
-  network = google_compute_network.vpc_network.name
-  deny {
-    protocol = "all"
-  }
-  direction = "EGRESS"
-  depends_on = [google_compute_instance.vm_instance]
-}
+# resource "google_compute_firewall" "egress" {
+#   name    = "firewall-egress"
+#   network = google_compute_network.vpc_network.name
+#   deny {
+#     protocol = "all"
+#   }
+#   direction = "EGRESS"
+#   depends_on = [google_compute_instance.vm_instance]
+# }
 
