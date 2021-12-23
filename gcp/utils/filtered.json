@@ -1,0 +1,52 @@
+[
+  {
+    "name": "compute.googleapis.com/projects/infra-actor-333516/global/targetHttpsProxies/terraform-load-balancer-target-proxy-2",
+    "displayName": "terraform-load-balancer-target-proxy-2",
+    "assetType": "TargetHttpsProxy"
+  },
+  {
+    "name": "compute.googleapis.com/projects/infra-actor-333516/global/sslCertificates/terraform-cert",
+    "displayName": "terraform-cert",
+    "assetType": "SslCertificate"
+  },
+  {
+    "name": "compute.googleapis.com/projects/infra-actor-333516/global/urlMaps/terraform-load-balancer",
+    "displayName": "terraform-load-balancer",
+    "assetType": "UrlMap"
+  },
+  {
+    "name": "compute.googleapis.com/projects/infra-actor-333516/global/backendServices/terraform-backend",
+    "displayName": "terraform-backend",
+    "assetType": "BackendService"
+  },
+  {
+    "name": "compute.googleapis.com/projects/infra-actor-333516/global/healthChecks/terraform-health-check",
+    "displayName": "terraform-health-check",
+    "assetType": "HealthCheck"
+  },
+  {
+    "name": "compute.googleapis.com/projects/infra-actor-333516/zones/europe-central2-a/instanceGroups/instance-group-terraform",
+    "displayName": "instance-group-terraform",
+    "assetType": "InstanceGroup"
+  },
+  {
+    "name": "compute.googleapis.com/projects/infra-actor-333516/zones/europe-central2-a/disks/terraform-instance",
+    "displayName": "terraform-instance",
+    "assetType": "Disk"
+  },
+  {
+    "name": "compute.googleapis.com/projects/infra-actor-333516/zones/europe-central2-a/instances/terraform-instance",
+    "displayName": "terraform-instance",
+    "assetType": "Instance"
+  },
+  {
+    "name": "compute.googleapis.com/projects/infra-actor-333516/global/networks/terraform-network",
+    "displayName": "terraform-network",
+    "assetType": "Network"
+  },
+  {
+    "name": "iam.googleapis.com/projects/infra-actor-333516/serviceAccounts/117923545612993229398/keys/5708a8231286c693837826301800c6bc30777b9d",
+    "displayName": "projects/infra-actor-333516/serviceAccounts/terraform@infra-actor-333516.iam.gserviceaccount.com/keys/5708a8231286c693837826301800c6bc30777b9d",
+    "assetType": "ServiceAccountKey"
+  }
+]
