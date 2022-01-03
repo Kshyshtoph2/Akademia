@@ -1,0 +1,538 @@
+[
+  {
+    "assetType": "compute.googleapis.com/TargetHttpsProxy",
+    "createTime": "2021-12-20T21:14:32Z",
+    "displayName": "terraform-load-balancer-target-proxy-2",
+    "location": "global",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/global/targetHttpsProxies/terraform-load-balancer-target-proxy-2",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "assetType": "compute.googleapis.com/SslCertificate",
+    "createTime": "2021-12-20T21:13:36Z",
+    "displayName": "terraform-cert",
+    "location": "global",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/global/sslCertificates/terraform-cert",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.196.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-19T06:27:48Z",
+    "displayName": "terraform-network",
+    "location": "us-east7",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/us-east7/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "assetType": "compute.googleapis.com/UrlMap",
+    "createTime": "2021-12-14T16:27:18Z",
+    "displayName": "terraform-load-balancer",
+    "location": "global",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/global/urlMaps/terraform-load-balancer",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "assetType": "compute.googleapis.com/BackendService",
+    "createTime": "2021-12-14T16:26:53Z",
+    "displayName": "terraform-backend",
+    "location": "global",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/global/backendServices/terraform-backend",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "assetType": "compute.googleapis.com/HealthCheck",
+    "createTime": "2021-12-14T16:26:47Z",
+    "displayName": "terraform-health-check",
+    "location": "global",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/global/healthChecks/terraform-health-check",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "assetType": "compute.googleapis.com/InstanceGroup",
+    "createTime": "2021-12-14T16:22:55Z",
+    "displayName": "instance-group-terraform",
+    "location": "europe-central2-a",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/zones/europe-central2-a/instanceGroups/instance-group-terraform",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "assetType": "compute.googleapis.com/Disk",
+    "createTime": "2021-12-14T12:59:56Z",
+    "displayName": "terraform-instance",
+    "location": "europe-central2-a",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/zones/europe-central2-a/disks/terraform-instance",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936",
+    "relationships": {
+      "DISK_FROM_IMAGE": {
+        "relatedResources": [
+          {
+            "assetType": "compute.googleapis.com/Image",
+            "fullResourceName": "//compute.googleapis.com/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20211021"
+          }
+        ]
+      },
+      "DISK_TO_INSTANCE": {
+        "relatedResources": [
+          {
+            "assetType": "compute.googleapis.com/Instance",
+            "fullResourceName": "//compute.googleapis.com/projects/infra-actor-333516/zones/europe-central2-a/instances/terraform-instance"
+          }
+        ]
+      }
+    },
+    "state": "READY"
+  },
+  {
+    "additionalAttributes": {
+      "deletionProtection": "FALSE",
+      "externalIPs": [
+        "34.116.139.160"
+      ],
+      "id": "2363467609377418148",
+      "internalIPs": [
+        "10.186.0.2"
+      ],
+      "machineType": "e2-small",
+      "networkInterfaceNames": [
+        "nic0"
+      ],
+      "networkInterfaceNetworks": [
+        "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/networks/terraform-network"
+      ]
+    },
+    "assetType": "compute.googleapis.com/Instance",
+    "createTime": "2021-12-14T12:59:55Z",
+    "displayName": "terraform-instance",
+    "location": "europe-central2-a",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/zones/europe-central2-a/instances/terraform-instance",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936",
+    "relationships": {
+      "INSTANCE_TO_INSTANCEGROUP": {
+        "relatedResources": [
+          {
+            "assetType": "compute.googleapis.com/InstanceGroup",
+            "fullResourceName": "//compute.googleapis.com/projects/infra-actor-333516/zones/europe-central2-a/instanceGroups/instance-group-terraform"
+          }
+        ]
+      }
+    },
+    "state": "RUNNING"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.138.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:12Z",
+    "displayName": "terraform-network",
+    "location": "us-west1",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/us-west1/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.194.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "southamerica-west1",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/southamerica-west1/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.192.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "australia-southeast2",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/australia-southeast2/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.190.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "asia-south2",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/asia-south2/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.188.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "northamerica-northeast2",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/northamerica-northeast2/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.186.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "europe-central2",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/europe-central2/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.184.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "asia-southeast2",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/asia-southeast2/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.182.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "us-west4",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/us-west4/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.180.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "us-west3",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/us-west3/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.178.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "asia-northeast3",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/asia-northeast3/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.174.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "asia-northeast2",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/asia-northeast2/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.172.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "europe-west6",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/europe-west6/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.170.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "asia-east2",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/asia-east2/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.168.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "us-west2",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/us-west2/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.166.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "europe-north1",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/europe-north1/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.164.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "europe-west4",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/europe-west4/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.162.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "northamerica-northeast1",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/northamerica-northeast1/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.160.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "asia-south1",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/asia-south1/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.158.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "southamerica-east1",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/southamerica-east1/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.156.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "europe-west3",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/europe-west3/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.154.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "europe-west2",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/europe-west2/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.152.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "australia-southeast1",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/australia-southeast1/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.150.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "us-east4",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/us-east4/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.148.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "asia-southeast1",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/asia-southeast1/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.146.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "asia-northeast1",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/asia-northeast1/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.142.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "us-east1",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/us-east1/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.140.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "asia-east1",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/asia-east1/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.132.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "europe-west1",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/europe-west1/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "additionalAttributes": {
+      "gatewayAddress": "10.128.0.1"
+    },
+    "assetType": "compute.googleapis.com/Subnetwork",
+    "createTime": "2021-12-14T12:59:11Z",
+    "displayName": "terraform-network",
+    "location": "us-central1",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/regions/us-central1/subnetworks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "assetType": "compute.googleapis.com/Network",
+    "createTime": "2021-12-14T12:59:05Z",
+    "displayName": "terraform-network",
+    "location": "global",
+    "name": "//compute.googleapis.com/projects/infra-actor-333516/global/networks/terraform-network",
+    "parentAssetType": "cloudresourcemanager.googleapis.com/Project",
+    "parentFullResourceName": "//cloudresourcemanager.googleapis.com/projects/infra-actor-333516",
+    "project": "projects/937596446936"
+  },
+  {
+    "assetType": "iam.googleapis.com/ServiceAccountKey",
+    "createTime": "2021-12-06T12:51:06Z",
+    "displayName": "projects/infra-actor-333516/serviceAccounts/terraform@infra-actor-333516.iam.gserviceaccount.com/keys/5708a8231286c693837826301800c6bc30777b9d",
+    "name": "//iam.googleapis.com/projects/infra-actor-333516/serviceAccounts/117923545612993229398/keys/5708a8231286c693837826301800c6bc30777b9d",
+    "parentAssetType": "iam.googleapis.com/ServiceAccount",
+    "parentFullResourceName": "//iam.googleapis.com/projects/infra-actor-333516/serviceAccounts/terraform@infra-actor-333516.iam.gserviceaccount.com",
+    "project": "projects/937596446936"
+  }
+]
