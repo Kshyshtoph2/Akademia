@@ -1,11 +1,3 @@
-provider "google" {
-  credentials = file("keys/credentials.json")
-  project     = var.project_id
-  region      = var.location["region"]
-  zone        = var.location["zone"]
-}
-
-
 resource "google_compute_network" "vpc_network" {
   name                    = "terraform-network"
   auto_create_subnetworks = false
@@ -13,11 +5,11 @@ resource "google_compute_network" "vpc_network" {
 
 }
 
-resource "google_compute_subnetwork" "vpc_subnet"{
-    name = "terraform-subnet"
-    ip_cidr_range = "10.0.0.0/22"
-    region = var.location["region"]
-    network = google_compute_network.vpc_network.id
+resource "google_compute_subnetwork" "vpc_subnet" {
+  name          = "terraform-subnet"
+  ip_cidr_range = "10.0.0.0/22"
+  region        = var.location["region"]
+  network       = google_compute_network.vpc_network.id
 }
 
 resource "google_compute_instance" "vm_instance" {
@@ -89,4 +81,13 @@ resource "google_compute_instance_group" "terraform-instance-group" {
     name = "http"
     port = "80"
   }
+}
+
+resource "google_compute_address" "nat-auto-ip" {
+  name = "terraform-adress"
+}
+resource "google_compute_router" "terraform-nat-router" {
+  name    = "terraform-nat-router"
+  region  = var.location["region"]
+  network = google_compute_network.vpc_network.id
 }

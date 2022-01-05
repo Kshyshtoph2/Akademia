@@ -12,6 +12,11 @@ provider "google" {
   project     = var.project_id
   region      = var.location["region"]
   zone        = var.location["zone"]
-  alias       = "default"
 }
 
+provider "google-beta" {
+  credentials = file("keys/credentials.json")
+  project     = var.project_id
+  region      = var.location["region"]
+  zone        = var.location["zone"]
+}

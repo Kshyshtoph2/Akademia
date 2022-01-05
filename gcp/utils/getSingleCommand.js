@@ -1,7 +1,5 @@
 const getSnakeCase = require("./getSnakeCase");
 
 module.exports = getSingleCommand = ({ name, displayName, assetType }) => {
-  return `module.load_balancer[0].${getSnakeCase(
-    assetType
-  )}.${displayName} ${name}`;
+  return `google_compute_${getSnakeCase(assetType)}.${displayName} ${name}`;
 };
