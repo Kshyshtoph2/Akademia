@@ -1,0 +1,597 @@
+{
+  "format_version": "1.0",
+  "terraform_version": "1.1.2",
+  "values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "google_compute_address.nat-auto-ip",
+          "mode": "managed",
+          "type": "google_compute_address",
+          "name": "nat-auto-ip",
+          "provider_name": "registry.terraform.io/hashicorp/google",
+          "schema_version": 0,
+          "values": {
+            "address": "34.118.111.36",
+            "address_type": "EXTERNAL",
+            "creation_timestamp": "2022-01-04T05:52:37.408-08:00",
+            "description": "",
+            "id": "projects/infra-actor-333516/regions/europe-central2/addresses/nat-auto-ip-1779784-8-1641304357129320",
+            "name": "nat-auto-ip-1779784-8-1641304357129320",
+            "network_tier": "PREMIUM",
+            "project": "infra-actor-333516",
+            "purpose": "NAT_AUTO",
+            "region": "europe-central2",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/regions/europe-central2/addresses/nat-auto-ip-1779784-8-1641304357129320",
+            "subnetwork": "",
+            "timeouts": { "create": null, "delete": null },
+            "users": [
+              "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/regions/europe-central2/routers/terraform-nat-router"
+            ]
+          },
+          "sensitive_values": { "timeouts": {}, "users": [false] }
+        },
+        {
+          "address": "google_compute_address.static",
+          "mode": "managed",
+          "type": "google_compute_address",
+          "name": "static",
+          "provider_name": "registry.terraform.io/hashicorp/google",
+          "schema_version": 0,
+          "values": {
+            "address": "34.116.139.160",
+            "address_type": "EXTERNAL",
+            "creation_timestamp": "2022-01-04T04:12:59.544-08:00",
+            "description": "",
+            "id": "projects/infra-actor-333516/regions/europe-central2/addresses/vm-public-address",
+            "name": "vm-public-address",
+            "network_tier": "PREMIUM",
+            "project": "infra-actor-333516",
+            "purpose": "",
+            "region": "europe-central2",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/regions/europe-central2/addresses/vm-public-address",
+            "subnetwork": "",
+            "timeouts": null,
+            "users": []
+          },
+          "sensitive_values": { "users": [] },
+          "depends_on": [
+            "google_compute_firewall.ingress",
+            "google_compute_network.vpc_network"
+          ]
+        },
+        {
+          "address": "google_compute_backend_service.terraform-backend",
+          "mode": "managed",
+          "type": "google_compute_backend_service",
+          "name": "terraform-backend",
+          "provider_name": "registry.terraform.io/hashicorp/google-beta",
+          "schema_version": 1,
+          "values": {
+            "affinity_cookie_ttl_sec": 0,
+            "backend": [
+              {
+                "balancing_mode": "UTILIZATION",
+                "capacity_scaler": 1,
+                "description": "",
+                "group": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/zones/europe-central2-a/instanceGroups/terraform-instance-group",
+                "max_connections": 0,
+                "max_connections_per_endpoint": 0,
+                "max_connections_per_instance": 0,
+                "max_rate": 0,
+                "max_rate_per_endpoint": 0,
+                "max_rate_per_instance": 0,
+                "max_utilization": 0
+              }
+            ],
+            "cdn_policy": [],
+            "circuit_breakers": [],
+            "connection_draining_timeout_sec": 300,
+            "consistent_hash": [],
+            "creation_timestamp": "2022-01-04T05:22:27.457-08:00",
+            "custom_request_headers": [],
+            "custom_response_headers": [],
+            "description": "",
+            "enable_cdn": false,
+            "fingerprint": "xZaVngRu4bc=",
+            "health_checks": [
+              "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/healthChecks/terraform-health-check"
+            ],
+            "iap": [],
+            "id": "projects/infra-actor-333516/global/backendServices/terraform-backend",
+            "load_balancing_scheme": "EXTERNAL",
+            "locality_lb_policy": "",
+            "log_config": [{ "enable": false, "sample_rate": 0 }],
+            "name": "terraform-backend",
+            "outlier_detection": [],
+            "port_name": "http",
+            "project": "infra-actor-333516",
+            "protocol": "HTTP",
+            "security_policy": "",
+            "security_settings": [],
+            "self_link": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/backendServices/terraform-backend",
+            "session_affinity": "NONE",
+            "timeout_sec": 30,
+            "timeouts": { "create": null, "delete": null, "update": null }
+          },
+          "sensitive_values": {
+            "backend": [{}],
+            "cdn_policy": [],
+            "circuit_breakers": [],
+            "consistent_hash": [],
+            "custom_request_headers": [],
+            "custom_response_headers": [],
+            "health_checks": [false],
+            "iap": [],
+            "log_config": [{}],
+            "outlier_detection": [],
+            "security_settings": [],
+            "timeouts": {}
+          },
+          "depends_on": [
+            "google_compute_address.static",
+            "google_compute_firewall.ingress",
+            "google_compute_health_check.terraform-health-check",
+            "google_compute_instance.vm_instance",
+            "google_compute_instance_group.terraform-instance-group",
+            "google_compute_network.vpc_network",
+            "google_compute_subnetwork.vpc_subnet"
+          ]
+        },
+        {
+          "address": "google_compute_firewall.ingress",
+          "mode": "managed",
+          "type": "google_compute_firewall",
+          "name": "ingress",
+          "provider_name": "registry.terraform.io/hashicorp/google",
+          "schema_version": 1,
+          "values": {
+            "allow": [
+              { "ports": ["80", "443", "22"], "protocol": "tcp" },
+              { "ports": [], "protocol": "icmp" }
+            ],
+            "creation_timestamp": "2022-01-04T04:12:47.453-08:00",
+            "deny": [],
+            "description": "",
+            "destination_ranges": [],
+            "direction": "INGRESS",
+            "disabled": false,
+            "enable_logging": null,
+            "id": "projects/infra-actor-333516/global/firewalls/firewall-ingress",
+            "log_config": [],
+            "name": "firewall-ingress",
+            "network": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/networks/terraform-network",
+            "priority": 1000,
+            "project": "infra-actor-333516",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/firewalls/firewall-ingress",
+            "source_ranges": ["0.0.0.0/0"],
+            "source_service_accounts": [],
+            "source_tags": [],
+            "target_service_accounts": [],
+            "target_tags": [],
+            "timeouts": null
+          },
+          "sensitive_values": {
+            "allow": [{ "ports": [false, false, false] }, { "ports": [] }],
+            "deny": [],
+            "destination_ranges": [],
+            "log_config": [],
+            "source_ranges": [false],
+            "source_service_accounts": [],
+            "source_tags": [],
+            "target_service_accounts": [],
+            "target_tags": []
+          },
+          "depends_on": ["google_compute_network.vpc_network"]
+        },
+        {
+          "address": "google_compute_global_forwarding_rule.https",
+          "mode": "managed",
+          "type": "google_compute_global_forwarding_rule",
+          "name": "https",
+          "provider_name": "registry.terraform.io/hashicorp/google-beta",
+          "schema_version": 0,
+          "values": {
+            "description": "",
+            "id": "projects/infra-actor-333516/global/forwardingRules/https",
+            "ip_address": "34.117.187.19",
+            "ip_protocol": "TCP",
+            "ip_version": "IPV4",
+            "label_fingerprint": "42WmSpB8rSM=",
+            "labels": {},
+            "load_balancing_scheme": "EXTERNAL",
+            "metadata_filters": [],
+            "name": "https",
+            "network": "",
+            "port_range": "443-443",
+            "project": "infra-actor-333516",
+            "self_link": "https://www.googleapis.com/compute/beta/projects/infra-actor-333516/global/forwardingRules/https",
+            "target": "https://www.googleapis.com/compute/beta/projects/infra-actor-333516/global/targetHttpsProxies/terraform-load-balancer-target-proxy-2",
+            "timeouts": { "create": null, "delete": null, "update": null }
+          },
+          "sensitive_values": {
+            "labels": {},
+            "metadata_filters": [],
+            "timeouts": {}
+          },
+          "depends_on": [
+            "google_compute_subnetwork.vpc_subnet",
+            "google_compute_url_map.terraform-url-map",
+            "google_compute_instance_group.terraform-instance-group",
+            "google_compute_backend_service.terraform-backend",
+            "google_compute_firewall.ingress",
+            "google_compute_health_check.terraform-health-check",
+            "google_compute_instance.vm_instance",
+            "google_compute_network.vpc_network",
+            "google_compute_ssl_certificate.terraform-cert",
+            "google_compute_target_https_proxy.terraform-target-proxy-https",
+            "google_compute_address.static"
+          ]
+        },
+        {
+          "address": "google_compute_health_check.terraform-health-check",
+          "mode": "managed",
+          "type": "google_compute_health_check",
+          "name": "terraform-health-check",
+          "provider_name": "registry.terraform.io/hashicorp/google",
+          "schema_version": 0,
+          "values": {
+            "check_interval_sec": 5,
+            "creation_timestamp": "2022-01-04T05:22:22.360-08:00",
+            "description": "",
+            "grpc_health_check": [],
+            "healthy_threshold": 2,
+            "http2_health_check": [],
+            "http_health_check": [],
+            "https_health_check": [],
+            "id": "projects/infra-actor-333516/global/healthChecks/terraform-health-check",
+            "name": "terraform-health-check",
+            "project": "infra-actor-333516",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/healthChecks/terraform-health-check",
+            "ssl_health_check": [],
+            "tcp_health_check": [
+              {
+                "port": 80,
+                "port_name": "",
+                "port_specification": "",
+                "proxy_header": "NONE",
+                "request": "",
+                "response": ""
+              }
+            ],
+            "timeout_sec": 5,
+            "timeouts": { "create": null, "delete": null, "update": null },
+            "type": "TCP",
+            "unhealthy_threshold": 2
+          },
+          "sensitive_values": {
+            "grpc_health_check": [],
+            "http2_health_check": [],
+            "http_health_check": [],
+            "https_health_check": [],
+            "ssl_health_check": [],
+            "tcp_health_check": [{}],
+            "timeouts": {}
+          }
+        },
+        {
+          "address": "google_compute_instance.vm_instance",
+          "mode": "managed",
+          "type": "google_compute_instance",
+          "name": "vm_instance",
+          "provider_name": "registry.terraform.io/hashicorp/google",
+          "schema_version": 6,
+          "values": {
+            "allow_stopping_for_update": null,
+            "attached_disk": [],
+            "boot_disk": [
+              {
+                "auto_delete": true,
+                "device_name": "persistent-disk-0",
+                "disk_encryption_key_raw": "",
+                "disk_encryption_key_sha256": "",
+                "initialize_params": [
+                  {
+                    "image": "https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20211021",
+                    "labels": {},
+                    "size": 10,
+                    "type": "pd-standard"
+                  }
+                ],
+                "kms_key_self_link": "",
+                "mode": "READ_WRITE",
+                "source": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/zones/europe-central2-a/disks/terraform-instance"
+              }
+            ],
+            "can_ip_forward": false,
+            "confidential_instance_config": [],
+            "cpu_platform": "Intel Broadwell",
+            "current_status": "RUNNING",
+            "deletion_protection": false,
+            "description": "",
+            "desired_status": null,
+            "enable_display": false,
+            "guest_accelerator": [],
+            "hostname": "",
+            "id": "projects/infra-actor-333516/zones/europe-central2-a/instances/terraform-instance",
+            "instance_id": "1076068204838224114",
+            "label_fingerprint": "42WmSpB8rSM=",
+            "labels": {},
+            "machine_type": "e2-small",
+            "metadata": {},
+            "metadata_fingerprint": "WK8684VByY4=",
+            "metadata_startup_script": "#!/bin/bash\n\nsudo apt update -y\nsudo apt install -y nginx\nCONF=$(cat \u003c\u003c- END \nevents {\n    worker_connections 1024;\n}\n\nhttp {\n\n    server {\n        listen 80;\n        \n        location / {\n            root /www/data;\n        }\n    }\n}\nEND\n)\necho \"$CONF\" | sudo tee /etc/nginx/nginx.conf\nsudo mkdir /www \nsudo mkdir /www/data \nINDEX=$(cat \u003c\u003c- END\n\u003c!doctype html\u003e\n\u003chtml\u003e\n  \u003chead\u003e\n    \u003ctitle\u003eHello nginx\u003c/title\u003e\n    \u003cmeta charset=\"utf-8\" /\u003e\n  \u003c/head\u003e\n  \u003cbody\u003e\n    \u003ch1\u003e\n      Hello World!\n    \u003c/h1\u003e\n  \u003c/body\u003e\n\u003c/html\u003e\nEND\n)\necho \"$INDEX\" | sudo tee /www/data/index.html\nsudo service nginx restart",
+            "min_cpu_platform": "",
+            "name": "terraform-instance",
+            "network_interface": [
+              {
+                "access_config": [],
+                "alias_ip_range": [],
+                "name": "nic0",
+                "network": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/networks/terraform-network",
+                "network_ip": "10.0.0.2",
+                "subnetwork": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/regions/europe-central2/subnetworks/terraform-subnet",
+                "subnetwork_project": "infra-actor-333516"
+              }
+            ],
+            "project": "infra-actor-333516",
+            "resource_policies": [],
+            "scheduling": [
+              {
+                "automatic_restart": true,
+                "node_affinities": [],
+                "on_host_maintenance": "MIGRATE",
+                "preemptible": false
+              }
+            ],
+            "scratch_disk": [],
+            "self_link": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/zones/europe-central2-a/instances/terraform-instance",
+            "service_account": [],
+            "shielded_instance_config": [
+              {
+                "enable_integrity_monitoring": true,
+                "enable_secure_boot": false,
+                "enable_vtpm": true
+              }
+            ],
+            "tags": [],
+            "tags_fingerprint": "42WmSpB8rSM=",
+            "timeouts": null,
+            "zone": "europe-central2-a"
+          },
+          "sensitive_values": {
+            "attached_disk": [],
+            "boot_disk": [{ "initialize_params": [{ "labels": {} }] }],
+            "confidential_instance_config": [],
+            "guest_accelerator": [],
+            "labels": {},
+            "metadata": {},
+            "network_interface": [
+              { "access_config": [], "alias_ip_range": [] }
+            ],
+            "resource_policies": [],
+            "scheduling": [{ "node_affinities": [] }],
+            "scratch_disk": [],
+            "service_account": [],
+            "shielded_instance_config": [{}],
+            "tags": []
+          },
+          "depends_on": [
+            "google_compute_subnetwork.vpc_subnet",
+            "google_compute_address.static",
+            "google_compute_firewall.ingress",
+            "google_compute_network.vpc_network"
+          ]
+        },
+        {
+          "address": "google_compute_instance_group.terraform-instance-group",
+          "mode": "managed",
+          "type": "google_compute_instance_group",
+          "name": "terraform-instance-group",
+          "provider_name": "registry.terraform.io/hashicorp/google",
+          "schema_version": 2,
+          "values": {
+            "description": "",
+            "id": "projects/infra-actor-333516/zones/europe-central2-a/instanceGroups/terraform-instance-group",
+            "instances": [
+              "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/zones/europe-central2-a/instances/terraform-instance"
+            ],
+            "name": "terraform-instance-group",
+            "named_port": [{ "name": "http", "port": 80 }],
+            "network": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/networks/terraform-network",
+            "project": "infra-actor-333516",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/zones/europe-central2-a/instanceGroups/terraform-instance-group",
+            "size": 1,
+            "timeouts": null,
+            "zone": "europe-central2-a"
+          },
+          "sensitive_values": { "instances": [false], "named_port": [{}] },
+          "depends_on": [
+            "google_compute_address.static",
+            "google_compute_firewall.ingress",
+            "google_compute_instance.vm_instance",
+            "google_compute_network.vpc_network",
+            "google_compute_subnetwork.vpc_subnet"
+          ]
+        },
+        {
+          "address": "google_compute_network.vpc_network",
+          "mode": "managed",
+          "type": "google_compute_network",
+          "name": "vpc_network",
+          "provider_name": "registry.terraform.io/hashicorp/google",
+          "schema_version": 0,
+          "values": {
+            "auto_create_subnetworks": false,
+            "delete_default_routes_on_create": false,
+            "description": "",
+            "gateway_ipv4": "",
+            "id": "projects/infra-actor-333516/global/networks/terraform-network",
+            "mtu": 0,
+            "name": "terraform-network",
+            "project": "infra-actor-333516",
+            "routing_mode": "REGIONAL",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/networks/terraform-network",
+            "timeouts": null
+          },
+          "sensitive_values": {}
+        },
+        {
+          "address": "google_compute_router.terraform-nat-router",
+          "mode": "managed",
+          "type": "google_compute_router",
+          "name": "terraform-nat-router",
+          "provider_name": "registry.terraform.io/hashicorp/google",
+          "schema_version": 0,
+          "values": {
+            "bgp": [],
+            "creation_timestamp": "2022-01-04T05:52:16.544-08:00",
+            "description": "",
+            "id": "projects/infra-actor-333516/regions/europe-central2/routers/terraform-nat-router",
+            "name": "terraform-nat-router",
+            "network": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/networks/terraform-network",
+            "project": "infra-actor-333516",
+            "region": "europe-central2",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/regions/europe-central2/routers/terraform-nat-router",
+            "timeouts": { "create": null, "delete": null, "update": null }
+          },
+          "sensitive_values": { "bgp": [], "timeouts": {} },
+          "depends_on": ["google_compute_network.vpc_network"]
+        },
+        {
+          "address": "google_compute_ssl_certificate.terraform-cert",
+          "mode": "managed",
+          "type": "google_compute_ssl_certificate",
+          "name": "terraform-cert",
+          "provider_name": "registry.terraform.io/hashicorp/google",
+          "schema_version": 0,
+          "values": {
+            "certificate": "-----BEGIN CERTIFICATE-----\nMIIEJzCCAw+gAwIBAgIUdHO7pFKnRv8oQbfecVDMFgFGh38wDQYJKoZIhvcNAQEL\nBQAwgaIxCzAJBgNVBAYTAlBMMRMwEQYDVQQIDApNYWxvcG9sc2thMQ8wDQYDVQQH\nDAZLcmFrb3cxGDAWBgNVBAoMD1NvbGlkIFBvdGVudGlhbDEMMAoGA1UECwwDZGV2\nMRIwEAYDVQQDDAlLcnp5c3p0b2YxMTAvBgkqhkiG9w0BCQEWImtyenlzenRvZi5i\nYXVtQHNvbGlkLXBvdGVudGlhbC5kZXYwHhcNMjIwMTA0MTQxMDM4WhcNMzIwMTAy\nMTQxMDM4WjCBojELMAkGA1UEBhMCUEwxEzARBgNVBAgMCk1hbG9wb2xza2ExDzAN\nBgNVBAcMBktyYWtvdzEYMBYGA1UECgwPU29saWQgUG90ZW50aWFsMQwwCgYDVQQL\nDANkZXYxEjAQBgNVBAMMCUtyenlzenRvZjExMC8GCSqGSIb3DQEJARYia3J6eXN6\ndG9mLmJhdW1Ac29saWQtcG90ZW50aWFsLmRldjCCASIwDQYJKoZIhvcNAQEBBQAD\nggEPADCCAQoCggEBAKwZs9FmhsY2yXoyjT0D/ZMkqGZAkxl5gI+7qPWlVrqMxr+V\nmj/KA4pQlZHYeL0yK3cThwTgV5OIgmJR5BQOs+3O7m7xIpHK0MfXLNoXaD78ZLvb\nngKjcmN8OWgyOjAkrr+M3Sd9yprwxxW1Cwuw4TRdGbQ7u4UaHuX7QnTk1dRILlTG\nxYrLhJokAOqahGx2y8E5t/kL82WDn/DWp04E7ZXe4NnZXnQVm1xEpQNzst1M6q/B\nXpV9vNR1WcBOvSSUkkFMormkEVSAEmf6faNvv3JPqwDbJ31ywqJVJB0gj9igGRRG\n/J+vZam0av53/1EzA3e4RNGsSLw/g/pp99Xu2ssCAwEAAaNTMFEwHQYDVR0OBBYE\nFL4X/hb2JY7k+gUbgpyYP74Yd10dMB8GA1UdIwQYMBaAFL4X/hb2JY7k+gUbgpyY\nP74Yd10dMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBACRAd0PL\n7FWNwai7zFXo7VCv38eHKSTREJO0EGcr/hJ/l4MY3YPfoZwrNqSL6Q+esuCVfqn4\nQFMDwGY8IB3JKcTT/RlEaDK7iwZYeEWfHOTuyyjESYDXvqIUkQLeyyjUhJiE4oVJ\n7d35S/p1UXUU1UO9gHhrcF+qSV2JRxZRK2XAYkJ/fi/WfGHl7mO9KDpIxlgQyN4o\nPWJwUPbrc7iDGuqLiAVX7/5Fx+AFxLmdou2mqL9FiTHbxEQluyrIKP7PkQKEnx7Q\n8gK3O1GKDvO3jnYyWoWOkhg6iJRewMPxWvSjBJelAWYXAimr6vKT3GdWR+NTq4lP\nik9mFGTx92fECp8=\n-----END CERTIFICATE-----\n",
+            "certificate_id": 1530642926357048164,
+            "creation_timestamp": "2022-01-04T06:11:23.584-08:00",
+            "description": "",
+            "id": "projects/infra-actor-333516/global/sslCertificates/terraform-cert",
+            "name": "terraform-cert",
+            "name_prefix": null,
+            "private_key": null,
+            "project": "infra-actor-333516",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/sslCertificates/terraform-cert",
+            "timeouts": { "create": null, "delete": null }
+          },
+          "sensitive_values": { "timeouts": {} }
+        },
+        {
+          "address": "google_compute_subnetwork.vpc_subnet",
+          "mode": "managed",
+          "type": "google_compute_subnetwork",
+          "name": "vpc_subnet",
+          "provider_name": "registry.terraform.io/hashicorp/google",
+          "schema_version": 0,
+          "values": {
+            "creation_timestamp": "2022-01-04T04:30:58.700-08:00",
+            "description": "",
+            "fingerprint": null,
+            "gateway_address": "10.0.0.1",
+            "id": "projects/infra-actor-333516/regions/europe-central2/subnetworks/terraform-subnet",
+            "ip_cidr_range": "10.0.0.0/22",
+            "log_config": [],
+            "name": "terraform-subnet",
+            "network": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/networks/terraform-network",
+            "private_ip_google_access": false,
+            "private_ipv6_google_access": "DISABLE_GOOGLE_ACCESS",
+            "project": "infra-actor-333516",
+            "region": "europe-central2",
+            "secondary_ip_range": [],
+            "self_link": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/regions/europe-central2/subnetworks/terraform-subnet",
+            "timeouts": null
+          },
+          "sensitive_values": { "log_config": [], "secondary_ip_range": [] },
+          "depends_on": ["google_compute_network.vpc_network"]
+        },
+        {
+          "address": "google_compute_target_https_proxy.terraform-target-proxy-https",
+          "mode": "managed",
+          "type": "google_compute_target_https_proxy",
+          "name": "terraform-target-proxy-https",
+          "provider_name": "registry.terraform.io/hashicorp/google-beta",
+          "schema_version": 0,
+          "values": {
+            "creation_timestamp": "2022-01-04T06:12:15.766-08:00",
+            "description": "",
+            "id": "projects/infra-actor-333516/global/targetHttpsProxies/terraform-load-balancer-target-proxy-2",
+            "name": "terraform-load-balancer-target-proxy-2",
+            "project": "infra-actor-333516",
+            "proxy_bind": false,
+            "proxy_id": 5944742315816512336,
+            "quic_override": "NONE",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/targetHttpsProxies/terraform-load-balancer-target-proxy-2",
+            "ssl_certificates": [
+              "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/sslCertificates/terraform-cert"
+            ],
+            "ssl_policy": "",
+            "timeouts": { "create": null, "delete": null, "update": null },
+            "url_map": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/urlMaps/terraform-load-balancer"
+          },
+          "sensitive_values": { "ssl_certificates": [false], "timeouts": {} },
+          "depends_on": [
+            "google_compute_backend_service.terraform-backend",
+            "google_compute_firewall.ingress",
+            "google_compute_health_check.terraform-health-check",
+            "google_compute_instance.vm_instance",
+            "google_compute_instance_group.terraform-instance-group",
+            "google_compute_url_map.terraform-url-map",
+            "google_compute_address.static",
+            "google_compute_network.vpc_network",
+            "google_compute_ssl_certificate.terraform-cert",
+            "google_compute_subnetwork.vpc_subnet"
+          ]
+        },
+        {
+          "address": "google_compute_url_map.terraform-url-map",
+          "mode": "managed",
+          "type": "google_compute_url_map",
+          "name": "terraform-url-map",
+          "provider_name": "registry.terraform.io/hashicorp/google-beta",
+          "schema_version": 0,
+          "values": {
+            "creation_timestamp": "2022-01-04T05:22:44.516-08:00",
+            "default_route_action": [],
+            "default_service": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/backendServices/terraform-backend",
+            "default_url_redirect": [],
+            "description": "",
+            "fingerprint": "aQYbeg8_MQg=",
+            "header_action": [],
+            "host_rule": [],
+            "id": "projects/infra-actor-333516/global/urlMaps/terraform-load-balancer",
+            "map_id": 855211073693414603,
+            "name": "terraform-load-balancer",
+            "path_matcher": [],
+            "project": "infra-actor-333516",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/infra-actor-333516/global/urlMaps/terraform-load-balancer",
+            "test": [],
+            "timeouts": { "create": null, "delete": null, "update": null }
+          },
+          "sensitive_values": {
+            "default_route_action": [],
+            "default_url_redirect": [],
+            "header_action": [],
+            "host_rule": [],
+            "path_matcher": [],
+            "test": [],
+            "timeouts": {}
+          },
+          "depends_on": [
+            "google_compute_subnetwork.vpc_subnet",
+            "google_compute_address.static",
+            "google_compute_backend_service.terraform-backend",
+            "google_compute_firewall.ingress",
+            "google_compute_health_check.terraform-health-check",
+            "google_compute_instance.vm_instance",
+            "google_compute_instance_group.terraform-instance-group",
+            "google_compute_network.vpc_network"
+          ]
+        }
+      ]
+    }
+  }
+}
